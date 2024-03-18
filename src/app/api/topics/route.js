@@ -8,3 +8,11 @@ export const GET = async () => {
   let datas = await Task.find();
   return NextResponse.json({ datas });
 };
+
+export const POST = async (req) => {
+  await expMongo();
+  let { task, description } = await req.json();
+  const newTask = new Task({ task, description });
+  await newTask.save();
+  return NextResponse.json({ task, description });
+};

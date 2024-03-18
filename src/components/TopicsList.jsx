@@ -10,21 +10,23 @@ async function getTask() {
 }
 
 const TopicsList = async() => {
-  let tasks = await getTask();
+  let {datas} = await getTask();
   return (
     <>
-      <div className="flex my-2 px-5 py-4 justify-between text-black items-center w-[100%] rounded-lg bor">
-        <div>
-          <h1 className=" font-bold text-2xl">{tasks.datas[0].task}</h1>
-          <div>{tasks.datas[0].description}</div>
+      {datas.map((task) => (
+        <div id={task._id} className="flex my-2 px-5 py-4 justify-between text-black items-center w-[100%] rounded-lg bor">
+          <div>
+            <h1 className=" font-bold text-2xl">{task.task}</h1>
+            <div>{task.description}</div>
+          </div>
+          <div className="flex gap-3">
+            <RemoveBtn size={24} />
+            <Link href={`/edittopic/s`}>
+              <HiPencilAlt size={24} />
+            </Link>
+          </div>
         </div>
-        <div className="flex gap-3">
-          <RemoveBtn size={24} />
-          <Link href={`/edittopic/s`}>
-            <HiPencilAlt size={24} />
-          </Link>
-        </div>
-      </div>
+      ))}
     </>
   );
 };
