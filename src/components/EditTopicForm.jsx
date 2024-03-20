@@ -2,46 +2,46 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
+const EditTopicForm = ({id, task, description}) => {
+  const [newTask, setNewTask] = useState(task);
+  const [newDescription, setNewDescription] = useState(description);
 
-const page = () => {
-  const [task, setTask] = useState("");
-  const [description, setDescription] = useState("");
-
-  const router = useRouter() 
+  const router = useRouter();
   const addTask = async () => {
     // console.log(task, description);
-    let res = await fetch("http://localhost:3000/api/topics", { 
-      cache: "no-store", 
-      method: "POST", 
-      headers: { "Content-type": "application/json" }, 
-      body: JSON.stringify({ task, description }) 
+    let res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+      cache: "no-store",
+      method: "PUT",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ newTask, newDescription }),
     });
-    router.push("/")
-    router.refresh()
+    router.push("/");
+    router.refresh();
   };
   const handlesub = (e) => {
     e.preventDefault();
   };
+
   return (
-    <>
+    <div>
       <h1 className=" font-bold text-xl">Add Topic</h1>
       <form
-        className="w-[70vmin]"
+        className="w-[70vmin] "
         onSubmit={handlesub}
       >
         <input
           className="w-[100%] h-10 rounded-md px-4 outline-none my-4"
           type="text"
           placeholder="Topicc Task"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
         />
         <input
           className="w-[100%] h-10 rounded-md px-4 outline-none mb-4"
           type="text"
           placeholder="Topic Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={newDescription}
+          onChange={(e) => setNewDescription(e.target.value)}
         />
 
         <button
@@ -49,11 +49,11 @@ const page = () => {
           onClick={addTask}
           className="w-[40%] text-white bg-zinc-800 h-10 rounded-md px-4 outline-none mb-4"
         >
-          Add Topic
+          Edit Topic
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
-export default page;
+export default EditTopicForm;
