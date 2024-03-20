@@ -4,7 +4,7 @@ import { HiPencilAlt } from "react-icons/hi";
 import Link from "next/link";
 
 async function getTask() {
-  let datas = await fetch("http://localhost:3000/api/topics", { cache: "no-store" });
+  let datas = await fetch(`${process.env.DOMAIN}/api/topics`, { cache: "no-store" });
   datas = await datas.json();
   return datas;
 }

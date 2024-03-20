@@ -10,7 +10,7 @@ const AddTopic = () => {
   const router = useRouter() 
   const addTask = async () => {
     // console.log(task, description);
-    let res = await fetch("http://localhost:3000/api/topics", { 
+    let res = await fetch(`${process.env.DOMAIN}/api/topics`, { 
       cache: "no-store", 
       method: "POST", 
       headers: { "Content-type": "application/json" }, 
