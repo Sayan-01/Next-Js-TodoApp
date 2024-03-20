@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 
-const page = () => {
+const AddTopic = () => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
 
@@ -56,4 +56,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AddTopic;

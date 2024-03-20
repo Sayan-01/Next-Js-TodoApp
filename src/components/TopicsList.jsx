@@ -15,10 +15,10 @@ const TopicsList = async () => {
     <>
       {datas.map((task) => (
         <div
-          id={task._id}
+          key={task._id}
           className="flex my-2 px-5 py-4 justify-between text-black items-center w-[100%] rounded-lg bor"
         >
-          <div>
+          <div >
             <h1 className=" font-bold text-2xl">{task.task}</h1>
             <div>{task.description}</div>
           </div>
