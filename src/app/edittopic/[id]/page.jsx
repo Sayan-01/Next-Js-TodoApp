@@ -2,7 +2,8 @@ import EditTopicForm from "@/components/EditTopicForm";
 import React from "react";
 
 async function getTask(id) {
-  let datas = await fetch(`${process.env.DOMAIN}/api/topics/${id}`, { cache: "no-store" });
+  let domain = process.env.DOMAIN;
+  let datas = await fetch(`${domain}/api/topics/${id}`, { cache: "no-store" });
   datas = await datas.json();
   return datas;
 }

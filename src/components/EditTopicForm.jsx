@@ -9,7 +9,7 @@ const EditTopicForm = ({id, task, description}) => {
   const router = useRouter();
   const addTask = async () => {
     // console.log(task, description);
-    let res = await fetch(`${process.env.DOMAIN}/api/topics/${id}`, {
+    let res = await fetch(`/api/topics/${id}`, {
       cache: "no-store",
       method: "PUT",
       headers: { "Content-type": "application/json" },
