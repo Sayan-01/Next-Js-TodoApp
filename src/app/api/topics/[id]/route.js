@@ -16,7 +16,7 @@ export const PUT = async (req, { params }) => {
   const {newTask, newDescription} = await req.json();
   let result = await Task.findOneAndUpdate(filter, { task: newTask, description: newDescription });
 
-  return NextResponse.json({result}); //paras holo
+  return NextResponse.json({result}); 
 };
 
 export const DELETE = async (req, { params }) => {
@@ -25,3 +25,5 @@ export const DELETE = async (req, { params }) => {
   await Task.findByIdAndDelete(id);
   return NextResponse.json({ message: "Topic Deleted" });
 };
+
+

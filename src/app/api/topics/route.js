@@ -11,7 +11,7 @@ export const GET = async () => {
 
 export const POST = async (req) => {
   await expMongo();
-  let { task, description } = await req.json();
+  let { task, description } = await req.json(); //express a jemon req.body hoy temon ate just req ar maddhome body  e pass hoy
   const newTask = new Task({ task, description });
   await newTask.save();
   return NextResponse.json({ task, description });
